@@ -6,9 +6,9 @@ import { Project } from "./app.model";
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get(':name')
-  getProject(@Param() project: Project): Promise<Project> {
-    return this.appService.getProject(project.name);
+  @Get()
+  getProject(): Promise<any> {
+    return this.appService.getAllProjects();
   }
 
   @Post()

@@ -7,13 +7,8 @@ import { InjectModel } from '@nestjs/mongoose';
 export class AppService {
   constructor(@InjectModel('Project') private readonly projectModel: Model<Project>) {}
 
-  async getProject(projectName: string): Promise<Project> {
-    const project = await this.findProject(projectName);
-    if (project) {
-      return project;
-    } else {
-      throw new NotFoundException('This project does not exist.');
-    }
+  async getAllProjects(): Promise<any> {
+    return this.projectModel.find().exec();
   }
 
   async addProject(projectDto: Project) {
